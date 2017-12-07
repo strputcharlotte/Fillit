@@ -2,9 +2,9 @@
 
 # FICHIERS 
 
-- tetriminos.c
-- fillit.c
-- main.c
+- parser.c
+- print_map.c
+- algo.c
 - Makefile (all, clean, fclean, re)
 
 
