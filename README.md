@@ -20,11 +20,11 @@ open, read, write, malloc/free, exit, close
     - + de 26 tetriminos ou - de 1
     - autre chose que des .
     - autre chose que des #
-    - # != 4
+    - '#' != 4
     - 4 # mais pas collés
     - mauvais nombre de points
 - structures reconnaissance de formes + stockage
-- # == A
+- '#' == A
 
 # ALGO
 
