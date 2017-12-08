@@ -3,9 +3,10 @@
 # FICHIERS 
 
 - parser.c
+- read.c
 - print_map.c
 - algo.c
-- Makefile (all, clean, fclean, re)
+-Makefile -> sources
 
 
 # FONCTIONS
