@@ -6,7 +6,7 @@
 - read.c
 - print_map.c
 - algo.c
--Makefile -> sources
+- Makefile -> sources
 
 
 # FONCTIONS
