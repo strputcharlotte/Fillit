@@ -4,6 +4,7 @@
 
 - parser.c
 - read.c
+- resolve.c
 - print_map.c
 - algo.c
 - Makefile -> sources
