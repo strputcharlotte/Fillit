@@ -6,14 +6,16 @@
 /*   By: cfarjane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 15:53:51 by cfarjane          #+#    #+#             */
-/*   Updated: 2017/12/08 19:01:50 by cfarjane         ###   ########.fr       */
+/*   Updated: 2017/12/09 15:57:42 by cfarjane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes.h"
+#include <stdio.h>
+#include "error_exit.c"
 
 int		open(char *fd, int O_RDONLY)
 {
+	fd = "parser.c";
 	if (fd)
 		return (1);
 	else
@@ -23,12 +25,13 @@ int		open(char *fd, int O_RDONLY)
 int		main(int argc, char **argv)
 {
 	int fd;
-//le buffer taille 5 correspond au nombre de char par ligne (donc les 4 points
-//et/ou # + le \n)
+//buff_fixe[5] => 5 char par ligne (4 #/. ; 1 \n)
 	char buff_fixe[5];
 	char *buff_var;
 
-	fd = open(argc[1], O_RDONLY)
-	if (!(buff_var = malloc(sizeof(char * 5))))
-		return (NULL);
+	if ((fd = open(argv[1], 4)) == -1)
+		error_exit("File doesn't exist", 100);
+	printf("%d\n", fd);
+//	if (!(buff_var = malloc(sizeof(char) * 5)))
+//		return (0);
 }

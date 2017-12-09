@@ -6,14 +6,14 @@
 #    By: cfarjane <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/08 12:16:57 by cfarjane          #+#    #+#              #
-#    Updated: 2017/12/08 15:13:13 by cfarjane         ###   ########.fr        #
+#    Updated: 2017/12/09 11:25:41 by cfarjane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fillit.a
-SRC = 
-FLAGS = -Werror -Wall -Wextra
-CC = gcc $(FLAGS)
+NAME 	= fillit.a
+SRC 	= read.c parser.c solver.c print.c
+FLAGS 	= -Werror -Wall -Wextra
+CC 		= gcc $(FLAGS)
 
 OBJ = $(SRC:.c=.o)
 	CL=\x1b[35m
