@@ -4,12 +4,11 @@
 
 - parser.c
 - read.c
-- resolve.c
 - print_map.c
 - algo.c
-- prealgo.c
+- prealgo.c -> modif car question
 - solver.c
-- Makefile -> sources
+- Makefile -> modif car does not compile
 
 
 # FONCTIONS
