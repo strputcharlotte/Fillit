@@ -20,19 +20,16 @@ open, read, write, malloc/free, exit, close
 # PARSING
 
 - lecture du fichier avec open et read sans les recoder, patate
-- gestion cas d'erreur
+- parsing cas d'erreur
     - '+' de 26 tetriminos ou '-' de 1;
     - autre chose que des .;
     - autre chose que des #;
     - '#' != 4;
     - 4 # mais pas collés;
     - mauvais nombre de points;
-- structures reconnaissance de formes + stockage
-- '#' == A
+- structures stockage des coordonnées de chaque tetri
+- déplacement en haut à gauche des tetri
 
-Au final c'est plus simple de faire juste le stockage des coordonnees de chaque
-tetri puis de les deplacer le plus en haut a gauche possible. Sans faire ce
-truc de stockage d'un seul cube qui rappelle toute la forme de tetri. 
 
 # ALGO
 
