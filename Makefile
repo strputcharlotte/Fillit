@@ -6,7 +6,7 @@
 #    By: cfarjane <cfarjane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/08 12:16:57 by cfarjane          #+#    #+#              #
-#    Updated: 2017/12/12 14:36:49 by emoreau          ###   ########.fr        #
+#    Updated: 2017/12/12 15:39:15 by emoreau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,22 +22,22 @@ OBJ = $(SRC:.c=.o)
 	CL2=\x1b[36m
 	NC=\033[0m
 
+%.o: %.c
+		@$(CC) -c $< -o $@ $(FLAGS)
+
 all:  $(NAME)
 
-$(NAME):
-	@make -C libft/
+$(NAME): $(OBJ)
 	@echo "$(GREEN)[✓]$(NC)$(CL) Objects of libft compiled$(NC)"
 	@$(CC) $(FLAGS) $(SRC) -o $(NAME) -I libft/ -L libft/ -lft
 	@echo "$(GREEN)[✓]$(NC)$(CL) executable $(NAME) built$(NC)"
 
 clean:
 	@rm -f $(OBJ)
-	@make clean -C libft/
 	@echo "$(RED)[-]$(NC)$(CL2) Objects of $(NAME) cleaned"
 
 fclean: clean
 	@rm -rf fillit
-	@make fclean -C libft/
 	@echo "$(RED)[-]$(NC)$(CL2) Library $(NAME) cleaned"
 
 re: fclean all
