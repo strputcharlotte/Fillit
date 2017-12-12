@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_prealgo.c                                       :+:      :+:    :+:   */
+/*   prealgo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emoreau <emoreau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 15:56:19 by emoreau           #+#    #+#             */
-/*   Updated: 2017/12/10 16:21:26 by emoreau          ###   ########.fr       */
+/*   Updated: 2017/12/12 17:04:04 by emoreau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,32 @@ int		ft_sizemin(int nbtetri)
 	while (sizemin * sizemin < nbcarre)
 		sizemin++;
 	return (sizemin);
+}
+
+#include <stdio.h>
+// overflow attention au ?
+void	ft_emptymap(int size, char **map)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	if(!(map = (char**)malloc(sizeof(char*) * (size + 1))))
+		return;
+	while (i < size)
+	{
+		if (!(map[i] = (char *)malloc(sizeof(char) * (size + 1))))
+			return;
+		while (j < size)
+		{
+			map[i][j] = '.';
+			j++;
+		}
+		printf("%s\n", map[i]);
+		map[i][j] = '\0';
+		j = 0;
+		i++;
+	}
+	map[i] = 0;
 }
