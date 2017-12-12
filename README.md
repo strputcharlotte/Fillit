@@ -1,5 +1,3 @@
-modif nulle
-
 # Fillit
 
 # FICHIERS
