@@ -6,7 +6,7 @@
 /*   By: cfarjane <cfarjane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 17:43:47 by cfarjane          #+#    #+#             */
-/*   Updated: 2017/12/12 16:43:56 by emoreau          ###   ########.fr       */
+/*   Updated: 2017/12/13 18:03:30 by emoreau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ char	*ft_read(char *argv);
 char	*ft_convletter(char *str);
 int		ft_compttetri(char *str);
 int		ft_sizemin(int nbrtetri);
-void	ft_emptymap(int size,char **map);
+char	**ft_emptymap(int size);
+int		ft_checktetri(int i, int j, char **map, char **tetri);
 
 #endif

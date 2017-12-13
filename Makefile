@@ -6,13 +6,13 @@
 #    By: cfarjane <cfarjane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/08 12:16:57 by cfarjane          #+#    #+#              #
-#    Updated: 2017/12/12 15:39:15 by emoreau          ###   ########.fr        #
+#    Updated: 2017/12/13 17:54:51 by emoreau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 	= fillit
-SRC 	= read.c prealgo.c main.c
-FLAGS 	= -Werror -Wall -Wextra
+SRC 	= read.c prealgo.c main.c solver.c
+FLAGS 	= -Werror -Wall -Wextra -g
 CC 		= gcc
 
 OBJ = $(SRC:.c=.o)

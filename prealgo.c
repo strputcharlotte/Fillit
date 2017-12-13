@@ -6,7 +6,7 @@
 /*   By: emoreau <emoreau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 15:56:19 by emoreau           #+#    #+#             */
-/*   Updated: 2017/12/12 17:04:04 by emoreau          ###   ########.fr       */
+/*   Updated: 2017/12/13 18:03:53 by emoreau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,30 +60,29 @@ int		ft_sizemin(int nbtetri)
 	return (sizemin);
 }
 
-#include <stdio.h>
-// overflow attention au ?
-void	ft_emptymap(int size, char **map)
+char	**ft_emptymap(int size)
 {
 	int i;
 	int j;
+	char **map;
 
 	i = 0;
 	j = 0;
-	if(!(map = (char**)malloc(sizeof(char*) * (size + 1))))
-		return;
+	if(!(map = (char **)malloc(sizeof(char *) * (size-1))))
+		return(NULL);
 	while (i < size)
 	{
-		if (!(map[i] = (char *)malloc(sizeof(char) * (size + 1))))
-			return;
+		if (!(map[i] = (char *)malloc(sizeof(char) * (size-2))))
+			return (NULL);
 		while (j < size)
 		{
 			map[i][j] = '.';
 			j++;
 		}
-		printf("%s\n", map[i]);
-		map[i][j] = '\0';
+		map[i][j] = 0;
 		j = 0;
 		i++;
 	}
 	map[i] = 0;
+	return (map);
 }
