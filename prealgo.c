@@ -6,7 +6,7 @@
 /*   By: emoreau <emoreau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 15:56:19 by emoreau           #+#    #+#             */
-/*   Updated: 2017/12/13 18:03:53 by emoreau          ###   ########.fr       */
+/*   Updated: 2017/12/14 15:17:56 by emoreau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ char	**ft_emptymap(int size)
 
 	i = 0;
 	j = 0;
-	if(!(map = (char **)malloc(sizeof(char *) * (size-1))))
+	if(!(map = (char **)malloc(sizeof(char *) * (size + 1))))
 		return(NULL);
 	while (i < size)
 	{
-		if (!(map[i] = (char *)malloc(sizeof(char) * (size-2))))
+		if (!(map[i] = (char *)malloc(sizeof(char) * (size + 1))))
 			return (NULL);
 		while (j < size)
 		{
