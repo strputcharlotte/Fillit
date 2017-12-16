@@ -6,9 +6,9 @@
 - read.c
 - print_map.c
 - algo.c
-- prealgo.c -> modif car question
+- prealgo.c
 - solver.c
-- Makefile -> modif car does not compile
+- Makefile -> pourquoi flag -g ?
 
 
 # FONCTIONS
