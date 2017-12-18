@@ -6,7 +6,7 @@
 /*   By: cfarjane <cfarjane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 13:12:33 by cfarjane          #+#    #+#             */
-/*   Updated: 2017/12/14 17:45:14 by cfarjane         ###   ########.fr       */
+/*   Updated: 2017/12/18 18:18:30 by cfarjane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,31 @@ char			**parsing_tab(char **tab)
 {
 	int x;
 	int y;
-//	int cpt_pts;
+	int cpt_pts;
 
 	x = 0;
 	y = 0;
-	while (**tab)
-	{
-		x++;
+	while (**tab && (x++))
 		y++;
-	}
 	if (!(*tab[x] == 4 && *tab[y] == 4))
 		error_exit("Wrong size of tab", 100);
-//	if (cpt_pts != 12)
-//		error_exit("Not a valid tetro", 101);
+	x = 0;
+	y = 0;
+	cpt_pts = 0;
+	while (tab)
+	{
+		if (y == '\n' && tab[x] && (x++))
+			y = 0;
+		if (y == '.' && (y++))
+			cpt_pts++;
+	}
+	if (cpt_pts != 12)
+		error_exit("Not a valid tetro", 101);
 	return (tab);
 }
 
-//parse chaque ligne, verifie le nombre de \n, 
+//parse chaque ligne, verifie le nombre de \n, de #, de tetro, si \n fin de
+//ligne,
 int				error(char *line, int fd, int nbtetro)
 {
 	int		i;
@@ -54,7 +62,7 @@ int				error(char *line, int fd, int nbtetro)
 	{
 		if (cpt > 4)
 			error_exit("Not a valid tetro", 104);
-		if (line[i] == '\0' && cpt != 4)
+		if ((line[i] == '\n' || line[i] == '\0')  && cpt != 4)
 			error_exit("Not a valid tetro", 105);
 	}
 	while (line[i] < 4)
@@ -63,14 +71,21 @@ int				error(char *line, int fd, int nbtetro)
 	return (fd);
 }
 
-//va a la ligne
-static char		*end(char *tetro_line)
+void			next_line(char **tab)
 {
-	while (*tetro_line)
-		tetro_line++;
-	return (tetro_line);
+	int x;
+	int y;
+
+	x = 0;
+	y = 0;
+	while (tab)
+	{
+		if (tab[y] == '\0')
+			x++;
+	}
 }
 
+//malloc tab, gestion changement de ligne pendant parsing, changement tetro
 char			**ft_parsing(char **tetro, char *line)
 {
 	int i;
@@ -82,7 +97,7 @@ char			**ft_parsing(char **tetro, char *line)
 		return (NULL);
 	i = 0;
 	if (line[4] == '\n')
-		end(line);
+		next_line(tetro);
 	while (cpt_n < 4)
 	{
 		if (line[i] == '\n')
@@ -90,14 +105,14 @@ char			**ft_parsing(char **tetro, char *line)
 		i++;
 	}
 	if (cpt_n == 4 && line[i] == '\n')
-		end(line);
+		next_line(tetro);
 	return (tetro);
 }
 
 //verifie si 4 # colles
-char			**checking(char **tab)
+char			**true_tetro(char **tab)
 {
-	int x;
+	int	x;
 	int	y;
 	int	cpt;
 
