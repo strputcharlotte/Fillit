@@ -6,13 +6,16 @@
 /*   By: cfarjane <cfarjane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 13:12:33 by cfarjane          #+#    #+#             */
-/*   Updated: 2017/12/18 18:18:30 by cfarjane         ###   ########.fr       */
+/*   Updated: 2017/12/18 18:50:48 by cfarjane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
 
-//parse le tetro et verifie la taille du tab + le nbr de points
+/*
+**parse le tetro et verifie la taille du tab + le nbr de points
+*/
+
 char			**parsing_tab(char **tab)
 {
 	int x;
@@ -40,8 +43,11 @@ char			**parsing_tab(char **tab)
 	return (tab);
 }
 
-//parse chaque ligne, verifie le nombre de \n, de #, de tetro, si \n fin de
-//ligne,
+/*
+**parse chaque ligne, verifie le nombre de \n, de #, de tetro, si \n fin de
+**ligne
+*/
+
 int				error(char *line, int fd, int nbtetro)
 {
 	int		i;
@@ -62,7 +68,7 @@ int				error(char *line, int fd, int nbtetro)
 	{
 		if (cpt > 4)
 			error_exit("Not a valid tetro", 104);
-		if ((line[i] == '\n' || line[i] == '\0')  && cpt != 4)
+		if ((line[i] == '\n' || line[i] == '\0') && cpt != 4)
 			error_exit("Not a valid tetro", 105);
 	}
 	while (line[i] < 4)
@@ -71,7 +77,7 @@ int				error(char *line, int fd, int nbtetro)
 	return (fd);
 }
 
-void			next_line(char **tab)
+static void			next_line(char **tab)
 {
 	int x;
 	int y;
@@ -85,7 +91,10 @@ void			next_line(char **tab)
 	}
 }
 
-//malloc tab, gestion changement de ligne pendant parsing, changement tetro
+/*
+**malloc tab, gestion changement de ligne pendant parsing, changement tetro
+*/
+
 char			**ft_parsing(char **tetro, char *line)
 {
 	int i;
@@ -109,7 +118,10 @@ char			**ft_parsing(char **tetro, char *line)
 	return (tetro);
 }
 
-//verifie si 4 # colles
+/*
+**verifie si 4 # colles
+*/
+
 char			**true_tetro(char **tab)
 {
 	int	x;
