@@ -6,7 +6,7 @@
 /*   By: emoreau <emoreau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 16:22:20 by emoreau           #+#    #+#             */
-/*   Updated: 2017/12/18 18:49:17 by emoreau          ###   ########.fr       */
+/*   Updated: 2018/01/02 12:35:23 by cfarjane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ char	**ft_removetetri(char **map, char c, int size)
 
 // alltetri = le fichier contenant tous les tetriminos
 
-char	**ft_solver(t_list alltetri)
+char	**ft_solver(t_list alltetri, int size)
 {
 	char **map;
 	char **tetri;

@@ -6,24 +6,17 @@
 /*   By: cfarjane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 19:46:49 by cfarjane          #+#    #+#             */
-/*   Updated: 2017/12/29 17:37:07 by cfarjane         ###   ########.fr       */
+/*   Updated: 2018/01/02 17:05:34 by cfarjane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
 
-typedef struct		t_list
+char				**list_tetri(char c, t_tetro all_tetri)
 {
-	int x;
-	int y;
-}					s_list;
-
-char				**list_tetri(char c, t_list all_tetri)
-{
-	char**tab;
+	char	**tab;
 
 	if (true_tetro(tab) == 0)
 		error_exit("Error", 200);
-	call_fonctions(int argc, char **argv);
 	return (tab);
 }

@@ -6,7 +6,7 @@
 /*   By: cfarjane <cfarjane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 13:12:33 by cfarjane          #+#    #+#             */
-/*   Updated: 2017/12/29 17:38:30 by cfarjane         ###   ########.fr       */
+/*   Updated: 2018/01/02 19:28:36 by cfarjane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ static void			next_line(char **tab)
 	y = 0;
 	while (tab)
 	{
-		if (tab[y] == '\0')
-			x++;
+		if (tab[x] == '\0')
+			y++;
+		x++;
 	}
 }
 
@@ -30,13 +31,13 @@ static int			cpt_tetro(char **tetro)
 {
 	int i;
 	int x;
-	int y;
 	int cpt_n;
 	int cpt_tetro;
 
 	cpt_tetro = 0;
 	while (cpt_tetro >= 0)
 	{
+		x = 0;
 		if (tetro[x][4] == '\n')
 			next_line(tetro);
 		cpt_n = 0;
@@ -63,8 +64,11 @@ char			**parsing_tab(char **tab)
 
 	x = 0;
 	y = 0;
-	while (**tab && (x++))
+	while (**tab)
+	{
 		y++;
+		x++;
+	}
 	if (!(*tab[x] == 4 && *tab[y] == 4))
 		error_exit("Wrong size of tab", 100);
 	x = 0;
@@ -73,9 +77,15 @@ char			**parsing_tab(char **tab)
 	while (tab)
 	{
 		if (y == '\n' && tab[x] && (x++))
+		{
 			y = 0;
-		if (y == '.' && (y++))
+			x++;
+		}
+		if (y == '.')
+		{
 			cpt_pts++;
+			y++;
+		}
 	}
 	if (cpt_pts != 12)
 		error_exit("Not a valid tetro", 101);
@@ -87,8 +97,8 @@ int				error(char **tab)
 	int		x;
 	int		y;
 	int		cpt;
-	int		cpt_pts;
 
+	x = 0;
 	while (x < 4 && (x++))
 	{
 		if (tab[x][4] != '\n')
@@ -97,6 +107,7 @@ int				error(char **tab)
 	if (cpt_tetro(tab) < 1)
 		error_exit("Too few tetros", 103);
 	cpt = 0;
+	y = 0;
 	while (*tab[y] == '#' && (y++) && (cpt++))
 	{
 		if (cpt > 4)

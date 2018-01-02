@@ -6,12 +6,13 @@
 #    By: cfarjane <cfarjane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/08 12:16:57 by cfarjane          #+#    #+#              #
-#    Updated: 2017/12/14 15:19:49 by emoreau          ###   ########.fr        #
+#    Updated: 2018/01/02 13:10:31 by cfarjane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 	= fillit
-SRC 	= read.c prealgo.c main.c solver.c
+SRC 	= call_fonctions.c main.c parser.c prealgo.c read.c ft_list.c\
+		  prealgo.c solver.c
 FLAGS 	= -Werror -Wall -Wextra -g
 CC 		= gcc
 
