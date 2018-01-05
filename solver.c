@@ -6,7 +6,7 @@
 /*   By: emoreau <emoreau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 16:22:20 by emoreau           #+#    #+#             */
-/*   Updated: 2018/01/02 12:35:23 by cfarjane         ###   ########.fr       */
+/*   Updated: 2018/01/05 18:57:04 by cfarjane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ char	**ft_removetetri(char **map, char c, int size)
 
 // alltetri = le fichier contenant tous les tetriminos
 
-char	**ft_solver(t_list alltetri, int size)
+char	**ft_solver(char **argv, int size)
 {
 	char **map;
 	char **tetri;
@@ -130,8 +130,9 @@ char	**ft_solver(t_list alltetri, int size)
 	compt = 0;
 	i_save = 0;
 	j_save = 0;
-	tetri = ft_charlotte(c, alltetri);
-	size = ft_sizemin(ft_compttetri(tetri));
+	map = NULL;
+	tetri = call_fonctions(argv);
+	size = ft_sizemin(ft_compttetri(*tetri));
 	ft_emptymap(size);
 	while (size < 14)
 	{
@@ -152,7 +153,7 @@ char	**ft_solver(t_list alltetri, int size)
 			j++;
 			i = 0;
 		}
-		if (compt < ft_compttetri(alltetri))
+		if (compt < ft_compttetri(*argv))
 		{
 			ft_emptymap(size);
 			if (i_save < size)
@@ -165,7 +166,7 @@ char	**ft_solver(t_list alltetri, int size)
 			i = i_save;
 			j = j_save;
 		}
-		if (j_save == size && i_save == size && compt < ft_compttetri(alltetri))
+		if (j_save == size && i_save == size && compt < ft_compttetri(*argv))
 		{
 			size++;
 			ft_emptymap(size);

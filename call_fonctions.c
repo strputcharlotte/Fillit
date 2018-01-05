@@ -6,60 +6,53 @@
 /*   By: cfarjane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/29 15:23:38 by cfarjane          #+#    #+#             */
-/*   Updated: 2018/01/03 19:18:19 by cfarjane         ###   ########.fr       */
+/*   Updated: 2018/01/05 19:10:53 by cfarjane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
-#include <stdio.h>
 
-char			**plcmt(char **tab)
+char		**plcmt(char **tab)
 {
-	int x;
-	int y;
-	char **new;
+	int		x;
+	int		y;
+	int		j;
+	int		k;
+	char	**new;
 
 	x = 4;
 	y = 4;
 	if (!(new = (char**)malloc(sizeof(char*) * (x * y))))
 		return (NULL);
-//	if (!(new[x] = (char*)malloc(sizeof(char) * (ft_strlen(tab[x])))))
-//		return (NULL);
 	x = 0;
 	y = 0;
+	k = 0;
+	j = 0;
 	while (tab)
 	{
-		if (ft_strcmp(tab[y], "#") == 0)
-		{
-			y++;
-			if (y == 3)
-			{
-				x++;
-				y = 0;
-			}
-		}
+		if (ft_strcmp(tab[y], "#") == 0 && (y++))
+			y == 3 ? x++ : y == 0;
+		if (!(new[k] = (char*)malloc(sizeof(char) * (ft_strlen(tab[y])))))
+			return (NULL);
 		if (ft_strcmp(tab[y], "#") != 0 && y <= 3)
-		{
-			new = new + y;
-			y++;
-		}
-		x++;
+			new[k] = new[k + (y++)];
+		new[j] = new[j + (x++)];
 		y = 0;
 	}
 	free(new);
-	printf("%s\n", *new);
 	return (new);
 }
 
-/*int			call_fonctions(int argc, char **argv)
+char			**call_fonctions(char **argv)
 {
-	if (argc > 2)
-		error_exit("Too many arguments", 300);
+//	if (argc > 2)
+//		error_exit("Too many arguments", 300)
 	while (**argv == 1)
 	{
 		parsing_tab(argv);
 		true_tetro(argv);
 		error(argv);
+		plcmt(argv);
 	}
-	return (0);
-}*/
+	return (argv);
+}
