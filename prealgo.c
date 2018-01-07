@@ -6,13 +6,13 @@
 /*   By: emoreau <emoreau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 15:56:19 by emoreau           #+#    #+#             */
-/*   Updated: 2018/01/05 19:03:33 by cfarjane         ###   ########.fr       */
+/*   Updated: 2018/01/07 18:40:17 by cfarjane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
 
-char	*ft_convletter(char *str)
+/*char	*ft_convletter(char *str)
 {
 	int i;
 	int compt;
@@ -36,7 +36,7 @@ char	*ft_convletter(char *str)
 		i++;
 	}
 	return (str);
-}
+}*/
 
 int		ft_compttetri(char *str)
 {

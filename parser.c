@@ -6,7 +6,7 @@
 /*   By: cfarjane <cfarjane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 13:12:33 by cfarjane          #+#    #+#             */
-/*   Updated: 2018/01/07 17:28:35 by emoreau          ###   ########.fr       */
+/*   Updated: 2018/01/07 17:43:26 by cfarjane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char			**parsing_tab(char **tab)
 	cpt_pts = 0;
 	while (tab)
 	{
-		if (y == '\n' && tab[x] && (x++))
+		if (y == '\n' && tab[x])
 		{
 			y = 0;
 			x++;
@@ -99,25 +99,31 @@ int				error(char **tab)
 	int		cpt;
 
 	x = 0;
-	while (x < 4 && (x++))
+	while (x < 4)
 	{
 		if (tab[x][4] != '\n')
 			error_exit("Not a valid tetro", 102);
+		x++;
 	}
 	if (cpt_tetro(tab) < 1)
 		error_exit("Too few tetros", 103);
 	cpt = 0;
 	y = 0;
-	while (*tab[y] == '#' && (y++) && (cpt++))
+	while (*tab[y] == '#')
 	{
 		if (cpt > 4)
 			error_exit("Not a valid tetro", 104);
 		if ((*tab[y] == '\n' || tab[y] == '\0') && cpt != 4)
 			error_exit("Not a valid tetro", 105);
+		y++;
+		cpt++;
 	}
 	while (y < 4)
-		if ((*tab[y] != '.' || *tab[y] != '#') && y < 3 && (y++))
+		if ((*tab[y] != '.' || *tab[y] != '#') && y < 3)
+		{
 			error_exit("Not a valid tetro", 106);
+			y++;
+		}
 	return (0);
 }
 
@@ -132,15 +138,17 @@ char			**true_tetro(char **tab)
 	cpt = 0;
 	while (**tab)
 	{
-		while (tab[y] && (y++))
+		while (tab[y])
 		{
 			if (y == '#')
 				cpt++;
+			y++;
 		}
-		while (tab[x] && (x++))
+		while (tab[x])
 		{
 			if (x == '#')
 				cpt++;
+			x++;
 		}
 	}
 	if (cpt == 6 && cpt == 8)

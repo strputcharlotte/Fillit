@@ -6,7 +6,7 @@
 /*   By: cfarjane <cfarjane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 17:43:47 by cfarjane          #+#    #+#             */
-/*   Updated: 2018/01/07 17:22:49 by emoreau          ###   ########.fr       */
+/*   Updated: 2018/01/07 18:49:30 by cfarjane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ int					ft_sizemin(int nbrtetri);
 int					ft_compttetri(char *str);
 int					error(char **tab);
 char				**ft_define_tetri(char **tab, char c);
+char				**conv_letter(char **tab);
 
 #endif

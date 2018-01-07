@@ -6,7 +6,7 @@
 /*   By: cfarjane <cfarjane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/29 15:23:38 by cfarjane          #+#    #+#             */
-/*   Updated: 2018/01/07 16:56:18 by emoreau          ###   ########.fr       */
+/*   Updated: 2018/01/07 18:49:38 by cfarjane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ char			**call_fonctions(char **argv)
 		true_tetro(argv);
 		error(argv);
 		plcmt(argv);
+		conv_letter(argv);
 	}
 	return (argv);
 }
