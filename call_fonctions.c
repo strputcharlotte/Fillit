@@ -6,7 +6,7 @@
 /*   By: cfarjane <cfarjane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/29 15:23:38 by cfarjane          #+#    #+#             */
-/*   Updated: 2018/01/07 18:49:38 by cfarjane         ###   ########.fr       */
+/*   Updated: 2018/01/07 20:13:10 by cfarjane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,25 @@ char		**plcmt(char **tab)
 
 char			**call_fonctions(char **argv)
 {
+	char	c;
+	int		cnt;
+	char **tetri;
+
+	c = 'A';
+//	char **test;
 //	if (argc > 2)
 //		error_exit("Too many arguments", 300)
-	while (**argv == 1)
+	cnt = 4;
+	while (cnt != 0)
 	{
-		parsing_tab(argv);
-		true_tetro(argv);
-		error(argv);
-		plcmt(argv);
+		//parsing_tab(argv);
+		//true_tetro(argv);
+		//error(argv);
+		//plcmt(argv);
 		conv_letter(argv);
+		tetri = ft_define_tetri(argv, c);
+		c++;
+		cnt--;
 	}
-	return (argv);
+	return (tetri);
 }

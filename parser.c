@@ -6,7 +6,7 @@
 /*   By: cfarjane <cfarjane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 13:12:33 by cfarjane          #+#    #+#             */
-/*   Updated: 2018/01/07 17:43:26 by cfarjane         ###   ########.fr       */
+/*   Updated: 2018/01/07 19:36:40 by cfarjane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,19 +64,19 @@ char			**parsing_tab(char **tab)
 
 	x = 0;
 	y = 0;
-	while (**tab)
+	while (tab[y])
 	{
 		y++;
 		x++;
 	}
-	if (!(*tab[x] == 4 && *tab[y] == 4))
+	if (!(x == 4 || y == 4))
 		error_exit("Wrong size of tab", 100);
 	x = 0;
 	y = 0;
 	cpt_pts = 0;
-	while (tab)
+	while (tab[y])
 	{
-		if (y == '\n' && tab[x])
+		if (tab[x][y] == '\n' && tab[x])
 		{
 			y = 0;
 			x++;

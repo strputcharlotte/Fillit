@@ -6,7 +6,7 @@
 /*   By: cfarjane <cfarjane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 15:53:51 by cfarjane          #+#    #+#             */
-/*   Updated: 2018/01/07 17:03:45 by emoreau          ###   ########.fr       */
+/*   Updated: 2018/01/07 20:27:58 by cfarjane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ char	*ft_read(char **argv)
 		error_exit("File doesn't exist", 100);
 	ret = read(fd, str, BUFF_SIZE);
 	str[ret] = 0;
-	str2 = ft_convletter(ft_strdup(str));
+	str2 = ft_strdup(str);
 	return (str2);
 }

@@ -6,14 +6,14 @@
 /*   By: emoreau <emoreau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 14:28:59 by emoreau           #+#    #+#             */
-/*   Updated: 2018/01/07 17:27:35 by emoreau          ###   ########.fr       */
+/*   Updated: 2018/01/07 19:50:11 by cfarjane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
 #include <stdio.h>
 
-static void		ft_print_map(char **map)
+void		ft_print_map(char **map)
 {
 	int i;
 
@@ -21,6 +21,7 @@ static void		ft_print_map(char **map)
 	while (map[i])
 	{
 		ft_putstr(map[i]);
+		write(1, "\n",1);
 		i++;
 	}
 }
@@ -28,6 +29,7 @@ static void		ft_print_map(char **map)
 int				main(int argc, char **argv)
 {
 	char **tab;
+	char **test;
 	char *str;
 	int i;
 
@@ -41,8 +43,8 @@ int				main(int argc, char **argv)
 	}
 	str = ft_read(argv);
 	tab = ft_strsplit(str, '\n');
-	tab = call_fonctions(tab);
-	printf("%s\n", tab[0]);
+	test = call_fonctions(tab);
+	ft_print_map(test);
 	ft_print_map(ft_solver (tab, 0, str));
 	return (0);
 }
