@@ -6,14 +6,14 @@
 #    By: cfarjane <cfarjane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/08 12:16:57 by cfarjane          #+#    #+#              #
-#    Updated: 2018/01/06 20:00:25 by cfarjane         ###   ########.fr        #
+#    Updated: 2018/01/07 17:06:49 by emoreau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 	= fillit
 SRC 	= call_fonctions.c main.c parser.c prealgo.c read.c\
-		  solver.c
-FLAGS 	= -Werror -Wall -Wextra
+		  solver.c solver_2.c
+FLAGS 	= -Werror -Wall -Wextra -g
 CC 		= gcc
 
 OBJ = $(SRC:.c=.o)
@@ -29,6 +29,7 @@ OBJ = $(SRC:.c=.o)
 all:  $(NAME)
 
 $(NAME): $(OBJ)
+	@make -C ./libft
 	@echo "$(GREEN)[✓]$(NC)$(CL) Objects of libft compiled$(NC)"
 	@$(CC) $(FLAGS) $(SRC) -o $(NAME) -I libft/ -L libft/ -lft
 	@echo "$(GREEN)[✓]$(NC)$(CL) executable $(NAME) built$(NC)"

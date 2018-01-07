@@ -6,7 +6,7 @@
 /*   By: emoreau <emoreau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 16:22:20 by emoreau           #+#    #+#             */
-/*   Updated: 2018/01/07 15:47:50 by emoreau          ###   ########.fr       */
+/*   Updated: 2018/01/07 17:08:30 by emoreau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	ft_horsmap(int i, int j, char **map, char **tetri)
 	return (0);
 }
 
-int			ft_checktetri(int i, int j, char **map, char **tetri)
+static int			ft_checktetri(int i, int j, char **map, char **tetri)
 {
 	int x;
 	int y;
@@ -57,7 +57,7 @@ int			ft_checktetri(int i, int j, char **map, char **tetri)
 	return (0);
 }
 
-char	**ft_placetetri(int i, int j, char **map, char **tetri)
+static char	**ft_placetetri(int i, int j, char **map, char **tetri)
 {
 	int x;
 	int y;
@@ -113,7 +113,7 @@ char	**ft_removetetri(char **map, char c, int size)
 
 // alltetri = le fichier contenant tous les tetriminos
 
-char	**ft_solver(char **argv, int size)
+char	**ft_solver(char **tab, int size, char *str)
 {
 	char **map;
 	char **tetri;
@@ -130,16 +130,16 @@ char	**ft_solver(char **argv, int size)
 	compt = 0;
 	i_save = 0;
 	j_save = 0;
-	map = NULL;
-	size = ft_sizemin(ft_compttetri(*tetri));
-	ft_emptymap(size);
+	//tab = call_functions()
+	size = ft_sizemin(ft_compttetri(str));
+	map = ft_emptymap(size);
 	while (size < 14)
 	{
 		while (map[j])
 		{
 			while (map[j][i])
 			{
-				tetri = ft_define_tetri(fichier_alltetri, c);
+				tetri = ft_define_tetri(tab, c);
 				if (ft_checktetri(i, j, map, tetri) == 0)
 				{
 					ft_placetetri(i, j, map, tetri);
@@ -149,12 +149,11 @@ char	**ft_solver(char **argv, int size)
 				}
 				i++;
 				c++;
-				free (tetri);
 			}
 			j++;
 			i = 0;
 		}
-		if (compt < ft_compttetri(*argv))
+		if (compt < ft_compttetri(str))
 		{
 			ft_emptymap(size);
 			if (i_save < size)
@@ -167,7 +166,7 @@ char	**ft_solver(char **argv, int size)
 			i = i_save;
 			j = j_save;
 		}
-		if (j_save == size && i_save == size && compt < ft_compttetri(*argv))
+		if (j_save == size && i_save == size && compt < ft_compttetri(str))
 		{
 			size++;
 			ft_emptymap(size);
