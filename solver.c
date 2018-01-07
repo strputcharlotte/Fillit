@@ -6,7 +6,7 @@
 /*   By: emoreau <emoreau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 16:22:20 by emoreau           #+#    #+#             */
-/*   Updated: 2018/01/05 18:57:04 by cfarjane         ###   ########.fr       */
+/*   Updated: 2018/01/07 13:31:20 by emoreau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,6 @@ char	**ft_solver(char **argv, int size)
 	i_save = 0;
 	j_save = 0;
 	map = NULL;
-	tetri = call_fonctions(argv);
 	size = ft_sizemin(ft_compttetri(*tetri));
 	ft_emptymap(size);
 	while (size < 14)
@@ -140,15 +139,16 @@ char	**ft_solver(char **argv, int size)
 		{
 			while (map[j][i])
 			{
-				if(ft_checktetri(i, j, map, tetri) == 0)
+				tetri = ft_define_tetri(fichier_alltetri, c);
+				if (ft_checktetri(i, j, map, tetri) == 0)
 				{
 					ft_placetetri(i, j, map, tetri);
-					c++;
 					compt++;
 					i = -1;
 					j = 0;
 				}
 				i++;
+				c++;
 			}
 			j++;
 			i = 0;
