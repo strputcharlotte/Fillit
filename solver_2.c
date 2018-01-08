@@ -6,7 +6,7 @@
 /*   By: emoreau <emoreau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 17:29:34 by emoreau           #+#    #+#             */
-/*   Updated: 2018/01/07 20:27:54 by cfarjane         ###   ########.fr       */
+/*   Updated: 2018/01/08 23:27:52 by cfarjane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,21 @@ static int	ft_comptl(char **tab, char c)
 	i = 0;
 	j = 0;
 	m = 0;
-	//printf("%s\n", tab[j]);
+	printf("1 : %s\n", tab[j]);
 	while (tab[j])
 	{
-		if (tab[j][i] == c)
+		/*if (tab[j][i] == c)
 		{
 			i = -1;
 			j++;
 			m++;
-		}
-		else if (tab[j][i] >= 'A' && tab[j][i] < c)
+		}*/
+		if (tab[j][i] >= 'A' && tab[j][i] <= c)
 		{
 			i = -1;
 			j++;
+			if (tab[j][i] == c)
+				m++;
 		}
 		i++;
 		if (tab[j][i] == c + 1)
@@ -60,14 +62,14 @@ char	**ft_define_tetri(char **tab, char c)
 		{
 			newline[y] = ft_strdup(tab[j]);
 			i = -1;
-			if (tab[j+1])
+			if (tab[j + 1])
 				j++;
 			y++;
 		}
 		else if (tab[j][i] >= 'A' && tab[j][i] < c)
 		{
 			i = -1;
-			if(tab[j+1])
+			if (tab[j + 1])
 				j++;
 		}
 		i++;
@@ -75,7 +77,7 @@ char	**ft_define_tetri(char **tab, char c)
 			j++;
 		if (tab[j][i] == c + 1)
 			return (newline);
-		if(tab[j][i] == '\n' && tab[j][i+1] == 0)
+		if (tab[j][i] == '\n' && tab[j][i + 1] == 0)
 			return (newline);
 	}
 	return (newline);
