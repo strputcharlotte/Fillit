@@ -6,13 +6,13 @@
 /*   By: cfarjane <cfarjane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/29 15:23:38 by cfarjane          #+#    #+#             */
-/*   Updated: 2018/01/07 20:13:10 by cfarjane         ###   ########.fr       */
+/*   Updated: 2018/01/20 15:19:58 by emoreau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
 
-char		**plcmt(char **tab)
+static char		**plcmt(char **tab)
 {
 	int		x;
 	int		y;
@@ -38,6 +38,26 @@ char		**plcmt(char **tab)
 			new[k] = new[k + (y++)];
 		new[j] = new[j + (x++)];
 		y = 0;
+	}
+	return (new);
+}
+
+static char			**define(char **tab)
+{
+	int x;
+	int y;
+	char *new;
+
+	x = 0;
+	y = 0;
+	tab = plcm(tab);
+	while (ft_strcmp(tab[x], ".")
+	{
+		x++;
+		if (ft_strcmp(tab[x], ".") && *tab[x] == 3)
+			y++;
+		else
+			new[x] = ft_strcpy(new[x], tab[x])
 	}
 	return (new);
 }
