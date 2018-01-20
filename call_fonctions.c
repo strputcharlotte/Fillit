@@ -6,13 +6,13 @@
 /*   By: cfarjane <cfarjane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/29 15:23:38 by cfarjane          #+#    #+#             */
-/*   Updated: 2018/01/20 15:19:58 by emoreau          ###   ########.fr       */
+/*   Updated: 2018/01/20 16:05:54 by cfarjane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
 
-static char		**plcmt(char **tab)
+char		**plcmt(char **tab)
 {
 	int		x;
 	int		y;
@@ -30,34 +30,39 @@ static char		**plcmt(char **tab)
 	j = 0;
 	while (tab)
 	{
-		if (ft_strcmp(tab[y], "#") == 0 && (y++))
-			y == 3 ? x++ : y == 0;
-		if (!(new[k] = (char*)malloc(sizeof(char) * (ft_strlen(tab[y])))))
-			return (NULL);
+		if (ft_strcmp(tab[y], "#") == 0)
+		{
+			if (y == 3)
+				x++;
+			y++;
+		}
+//		if (!(new[k] = (char*)malloc(sizeof(char) * (ft_strlen(tab[y])))))
+//			return (NULL);
 		if (ft_strcmp(tab[y], "#") != 0 && y <= 3)
-			new[k] = new[k + (y++)];
-		new[j] = new[j + (x++)];
+			new[k++][j] = tab[x][y++];
+//		new[k][j++] = tab[x++][y];
 		y = 0;
 	}
 	return (new);
 }
 
-static char			**define(char **tab)
+char			**define(char **tab)
 {
 	int x;
 	int y;
-	char *new;
+	char **new;
 
 	x = 0;
 	y = 0;
-	tab = plcm(tab);
-	while (ft_strcmp(tab[x], ".")
+	new = NULL;
+	tab = plcmt(tab);
+	while (ft_strcmp(tab[x], "."))
 	{
 		x++;
 		if (ft_strcmp(tab[x], ".") && *tab[x] == 3)
 			y++;
 		else
-			new[x] = ft_strcpy(new[x], tab[x])
+			new[x] = ft_strcpy(new[x], tab[x]);
 	}
 	return (new);
 }
@@ -78,7 +83,7 @@ char			**call_fonctions(char **argv)
 		//parsing_tab(argv);
 		//true_tetro(argv);
 		//error(argv);
-		//plcmt(argv);
+		define(argv);
 		conv_letter(argv);
 		tetri = ft_define_tetri(argv, c);
 		c++;
